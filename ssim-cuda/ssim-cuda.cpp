@@ -57,7 +57,7 @@ int main(int argc, char *argv[])
 	unsigned long testFramesToWait = strtol(argv[4], NULL, 10);
 
 
-	long framesToProcess = -1;
+	unsigned long framesToProcess = -1;
 
 	if (argc >= 6){
 		framesToProcess = strtol(argv[5], NULL, 10);
