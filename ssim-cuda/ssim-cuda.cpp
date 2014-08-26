@@ -154,9 +154,9 @@ int main(int argc, char *argv[])
 
 		++comparisonFrameNum;
 
-		redChannelTotal += (unsigned long long) mssimV.val[2] * 10000; //To store up to 2 decimal places
-		greenChannelTotal += (unsigned long long) mssimV.val[1] * 10000; //To store up to 2 decimal places
-		blueChannelTotal += (unsigned long long)  mssimV.val[0] * 10000; //To store up to 2 decimal places
+		redChannelTotal += (unsigned long long) (mssimV.val[2] * 10000); //To store up to 2 decimal places
+		greenChannelTotal += (unsigned long long) (mssimV.val[1] * 10000); //To store up to 2 decimal places
+		blueChannelTotal += (unsigned long long)  (mssimV.val[0] * 10000); //To store up to 2 decimal places
 
 		if ((comparisonFrameNum % STATUS_PER_NUM_FRAMES) == 0){
 			cout << "Finished " << setfill('0') << setw(6) << comparisonFrameNum << " frames,";
