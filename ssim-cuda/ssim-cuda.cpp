@@ -36,9 +36,7 @@ Scalar getMSSIM_GPU_optimized(const Mat& i1, const Mat& i2, BufferMSSIM& b);
 int main(int argc, char *argv[])
 {
 
-
 	char c;
-	int delay = 10;
 
 
 	if (argc < 6)
@@ -46,7 +44,7 @@ int main(int argc, char *argv[])
 		cout << "Not enough parameters" << endl;
 		cout << "Command: ssim reference_video.avi test_video.avi w x y [z]" << endl;
 		cout << "Where w is the start frame of reference video and x is the start frame of test video." << endl;
-		cout << "y is whether to delay 10ms between frames. If no delay, calculation will be faster but video will not be shown on screen. Put 'd' to delay or anything else to not delay" << endl;
+		cout << "y is the ms delay between frames. If delay is 0, calculation will be faster but video will not be shown on screen. A value of 10 is recommended." << endl;
 		cout << "[z] (optional) is the number of frames to process. If not specified, app will process to end of any video." << endl;
 
 		return -1;
@@ -58,17 +56,9 @@ int main(int argc, char *argv[])
 
 	unsigned long refFramesToWait = strtol(argv[3], NULL, 10);
 	unsigned long testFramesToWait = strtol(argv[4], NULL, 10);
-
-	const string delayStr = argv[5];
+	int delayBetweenFrames = strtol(argv[5], NULL, 10);
 
 	unsigned long framesToProcess = -1;
-
-	bool toDelayBetweenFrames= false;
-
-	if(delayStr.compare("d") == 0){
-		toDelayBetweenFrames = true;
-	}
-
 
 	if (argc >= 7){
 		framesToProcess = strtol(argv[6], NULL, 10);
@@ -192,8 +182,8 @@ int main(int argc, char *argv[])
 		imshow(WIN_RF, frameReference);
 		imshow(WIN_UT, frameUnderTest);
 
-		if(toDelayBetweenFrames){
-			c = (char)cvWaitKey(delay);
+		if(delayBetweenFrames > 0){
+			c = (char)cvWaitKey(delayBetweenFrames);
 			if (c == 27) break;
 		}
 
