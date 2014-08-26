@@ -53,8 +53,8 @@ int main(int argc, char *argv[])
 
 
 
-	long refFramesToWait = strtol(argv[3], NULL, 10);
-	long testFramesToWait = strtol(argv[4], NULL, 10);
+	unsigned long refFramesToWait = strtol(argv[3], NULL, 10);
+	unsigned long testFramesToWait = strtol(argv[4], NULL, 10);
 
 
 	long framesToProcess = -1;
@@ -62,8 +62,6 @@ int main(int argc, char *argv[])
 	if (argc >= 6){
 		framesToProcess = strtol(argv[5], NULL, 10);
 	}
-
-	char c;
 
 	unsigned long refFrameNum = 0;
 	unsigned long testFrameNum = 0;
@@ -118,7 +116,6 @@ int main(int argc, char *argv[])
 
 
 	Mat frameReference, frameUnderTest;
-	double psnrV;
 	Scalar mssimV;
 
 	BufferMSSIM bufferMSSIM;
@@ -157,16 +154,16 @@ int main(int argc, char *argv[])
 
 		++comparisonFrameNum;
 
-		redChannelTotal += mssimV.val[2] * 10000; //To store up to 2 decimal places
-		greenChannelTotal += mssimV.val[1] * 10000; //To store up to 2 decimal places
-		blueChannelTotal += mssimV.val[0] * 10000; //To store up to 2 decimal places
+		redChannelTotal += (unsigned long long) mssimV.val[2] * 10000; //To store up to 2 decimal places
+		greenChannelTotal += (unsigned long long) mssimV.val[1] * 10000; //To store up to 2 decimal places
+		blueChannelTotal += (unsigned long long)  mssimV.val[0] * 10000; //To store up to 2 decimal places
 
 		if ((comparisonFrameNum % STATUS_PER_NUM_FRAMES) == 0){
 			cout << "Finished " << setfill('0') << setw(6) << comparisonFrameNum << " frames,";
 
-			float redSimilarity = (redChannelTotal / comparisonFrameNum) / 100.0;
-			float greenSimilarity = (greenChannelTotal / comparisonFrameNum) / 100.0;
-			float blueSimilarity = (blueChannelTotal / comparisonFrameNum) / 100.0;
+			double redSimilarity = (redChannelTotal / comparisonFrameNum) / 100.0;
+			double greenSimilarity =  (greenChannelTotal / comparisonFrameNum) / 100.0;
+			double blueSimilarity =  (blueChannelTotal / comparisonFrameNum) / 100.0;
 
 			cout << " Similarity so far: "
 				<< " R " << setiosflags(ios::fixed) << setprecision(2) << redSimilarity << "%"
@@ -180,8 +177,6 @@ int main(int argc, char *argv[])
 		imshow(WIN_RF, frameReference);
 		imshow(WIN_UT, frameUnderTest);
 
-		c = (char)cvWaitKey(delay);
-		if (c == 27) break;
 
 		if (framesToProcess >= 0 && comparisonFrameNum >= framesToProcess){
 			break;
@@ -189,9 +184,9 @@ int main(int argc, char *argv[])
 	}
 
 
-	float redSimilarity = (redChannelTotal / comparisonFrameNum) / 100.0;
-	float greenSimilarity = (greenChannelTotal / comparisonFrameNum) / 100.0;
-	float blueSimilarity = (blueChannelTotal / comparisonFrameNum) / 100.0;
+	double redSimilarity = (redChannelTotal / comparisonFrameNum) / 100.0;
+	double greenSimilarity = (greenChannelTotal / comparisonFrameNum) / 100.0;
+	double blueSimilarity = (blueChannelTotal / comparisonFrameNum) / 100.0;
 
 	cout << "Ref start frame: " << refFramesToWait << ", Test start frame: " << testFramesToWait << endl;
 	cout << "Final Results" << endl;
@@ -202,7 +197,7 @@ int main(int argc, char *argv[])
 
 	cout << endl;
 
-	float average = (redSimilarity + greenSimilarity + blueSimilarity) / 3;
+	double average = (redSimilarity + greenSimilarity + blueSimilarity) / 3;
 
 	cout << "Similarity = " << average << "%" << endl;
 
