@@ -38,7 +38,7 @@ int main(int argc, char *argv[])
 
 
 	char c;
-	int delay = 1;
+	int delay = 10;
 	if (argc < 5)
 	{
 		cout << "Not enough parameters" << endl;
