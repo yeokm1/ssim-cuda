@@ -39,11 +39,15 @@ int main(int argc, char *argv[])
 
 	char c;
 	int delay = 10;
-	if (argc < 5)
+
+
+	if (argc < 6)
 	{
 		cout << "Not enough parameters" << endl;
-		cout << "Command: ssim reference_video.avi test_video.avi x y [z]" << endl;
-		cout << "Where x is start frame of reference video and y is the start frame of test video. [z] (optional) is the number of frames to process. If not specified, app will process to end of any video." << endl;
+		cout << "Command: ssim reference_video.avi test_video.avi w x y [z]" << endl;
+		cout << "Where w is the start frame of reference video and x is the start frame of test video." << endl;
+		cout << "y is whether to delay 10ms between frames. If no delay, calculation will be faster but video will not be shown on screen. Put 'd' to delay or anything else to not delay" << endl;
+		cout << "[z] (optional) is the number of frames to process. If not specified, app will process to end of any video." << endl;
 
 		return -1;
 	}
@@ -52,15 +56,22 @@ int main(int argc, char *argv[])
 	const string sourceReference = argv[1], sourceCompareWith = argv[2];
 
 
-
 	unsigned long refFramesToWait = strtol(argv[3], NULL, 10);
 	unsigned long testFramesToWait = strtol(argv[4], NULL, 10);
 
+	const string delayStr = argv[5];
 
 	unsigned long framesToProcess = -1;
 
-	if (argc >= 6){
-		framesToProcess = strtol(argv[5], NULL, 10);
+	bool toDelayBetweenFrames= false;
+
+	if(delayStr.compare("d") == 0){
+		toDelayBetweenFrames = true;
+	}
+
+
+	if (argc >= 7){
+		framesToProcess = strtol(argv[6], NULL, 10);
 	}
 
 	unsigned long refFrameNum = 0;
@@ -181,9 +192,10 @@ int main(int argc, char *argv[])
 		imshow(WIN_RF, frameReference);
 		imshow(WIN_UT, frameUnderTest);
 
-
-		c = (char)cvWaitKey(delay);
-        if (c == 27) break;
+		if(toDelayBetweenFrames){
+			c = (char)cvWaitKey(delay);
+			if (c == 27) break;
+		}
 
 		if (framesToProcess >= 0 && comparisonFrameNum >= framesToProcess){
 			break;
