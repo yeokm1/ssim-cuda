@@ -37,7 +37,7 @@ int main(int argc, char *argv[])
 {
 
 
-
+	char c;
 	int delay = 10;
 	if (argc < 5)
 	{
@@ -177,6 +177,9 @@ int main(int argc, char *argv[])
 		imshow(WIN_RF, frameReference);
 		imshow(WIN_UT, frameUnderTest);
 
+
+		c = (char)cvWaitKey(delay);
+        if (c == 27) break;
 
 		if (framesToProcess >= 0 && comparisonFrameNum >= framesToProcess){
 			break;
