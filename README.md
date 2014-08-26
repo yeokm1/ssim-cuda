@@ -1,7 +1,7 @@
 ssim-cuda
 =========
 
-CUDA Program to measure the similarity between two videos using the OpenCV library and the structural similarity algorithm (SSIM). This is modified from the [gpu-basics-similarity tutorial](http://docs.opencv.org/doc/tutorials/gpu/gpu-basics-similarity/gpu-basics-similarity.html) of OpenCV. For the non-CUDA, pure CPU version, checkout my other [project](https://github.com/yeokm1/ssim).
+CUDA Program to measure the similarity between two videos using the OpenCV library and the structural similarity algorithm (SSIM). This is modified from the [gpu-basics-similarity tutorial](http://docs.opencv.org/doc/tutorials/gpu/gpu-basics-similarity/gpu-basics-similarity.html) of OpenCV. For the non-CUDA, pure CPU version, check out my other [project](https://github.com/yeokm1/ssim).
 
 ##Usage
 ```bash
