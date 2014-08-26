@@ -36,7 +36,7 @@ VS2013 has some problems compiling OpenCV 2.4.9 at this time but should have bee
 8. Go to `C:\opencv\build` and open OPENCV.sln. Select Debug Build.
 9. Click BUILD in the toolbar and BUILD ALL_BUILD. If VS asks to reload modules because they have been modified externally, just reload.
 10. Select Release Build and repeat step 8.
-11. Go to System Properties to set your path. Modify path by adding, `c:\opencv\build\bin\DEBUG;c:\opencv\build\bin\RELEASE`
+11. Go to System Properties to set your PATH. Modify PATH by adding, `c:\opencv\build\bin\DEBUG;c:\opencv\build\bin\RELEASE`
 
 ##Project Settings (for new projects)
 This is optional as I have already set the settings in the current project. If you want to use your compiled OpenCV installation for other new projects, these are steps you should configure.
@@ -97,4 +97,8 @@ This is optional as I have already set the settings in the current project. If y
  * opencv_videostab249.lib
 
 ##References
-
+ * [Similarity check (PNSR and SSIM) on the GPU](http://docs.opencv.org/doc/tutorials/gpu/gpu-basics-similarity/gpu-basics-similarity.html)
+ * [Configuring CMake options](http://answers.opencv.org/question/13490/cmake-opencv245-git-repository-24-branch-windows-7/)
+ * [CMake CUDA options](http://www.programmerfish.com/how-to-build-opencv-2-4-6-with-gpu-module-in-windows/#.U_xsUPmSwjW)
+ * [CMake CUDA optimisations](http://answers.opencv.org/question/5090/why-opencv-building-is-so-slow-with-cuda/)
+ * [Configuring system PATH and VS project options](http://opencv-srf.blogspot.sg/2013/05/installing-configuring-opencv-with-vs.html)
