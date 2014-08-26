@@ -37,3 +37,64 @@ VS2013 has some problems compiling OpenCV 2.4.9 at this time but should have bee
 9. Click BUILD in the toolbar and BUILD ALL_BUILD. If VS asks to reload modules because they have been modified externally, just reload.
 10. Select Release Build and repeat step 8.
 11. Go to System Properties to set your path. Modify path by adding, `c:\opencv\build\bin\DEBUG;c:\opencv\build\bin\RELEASE`
+
+##Project Settings (for new projects)
+This is optional as I have already set the settings in the current project. If you want to use your compiled OpenCV installation for other new projects, these are steps you should configure.
+
+1. Set your project to Debug mode.
+2. Right click on your project name on the sidebar like "ssim-cuda" and select Properties. 
+3. Go to: Configuration Properties -> C/C++ -> General -> Additional Include Directories. Add the include paths of the modules you are using. For ssim-cuda, that would be
+ * C:\opencv\modules\core\include
+ * C:\opencv\modules\imgproc\include
+ * C:\opencv\modules\highgui\include
+ * C:\opencv\modules\gpu\include
+ * C:\opencv\modules\objdetect\include
+ * C:\opencv\modules\features2d\include
+ * C:\opencv\modules\flann\include
+4. Go to: Configuration Properties -> Linker -> General -> Additional Library Directories. Set to `C:\opencv\build\lib\Debug`. 
+5. Go to: Configuration Properties -> Linker -> Input -> Additional Dependencies. Add these
+ * opencv_calib3d249d.lib
+ * opencv_contrib249d.lib
+ * opencv_core249d.lib
+ * opencv_features2d249d.lib
+ * opencv_flann249d.lib
+ * opencv_gpu249d.lib
+ * opencv_highgui249d.lib
+ * opencv_imgproc249d.lib
+ * opencv_legacy249d.lib
+ * opencv_ml249d.lib
+ * opencv_nonfree249d.lib
+ * opencv_objdetect249d.lib
+ * opencv_ocl249d.lib
+ * opencv_photo249d.lib
+ * opencv_stitching249d.lib
+ * opencv_superres249d.lib
+ * opencv_ts249d.lib
+ * opencv_video249d.lib
+ * opencv_videostab249d.lib
+6. Set your project to Release mode.
+7. Repeat Step 2 and 3.
+8. Go to: Configuration Properties -> Linker -> General -> Additional Library Directories. Set to `C:\opencv\build\lib\Release`.
+9. Go to: Configuration Properties -> Linker -> Input -> Additional Dependencies. Add these
+ * opencv_calib3d249.lib
+ * opencv_contrib249.lib
+ * opencv_core249.lib
+ * opencv_features2d249.lib
+ * opencv_flann249.lib
+ * opencv_gpu249.lib
+ * opencv_highgui249.lib
+ * opencv_imgproc249.lib
+ * opencv_legacy249.lib
+ * opencv_ml249.lib
+ * opencv_nonfree249.lib
+ * opencv_objdetect249.lib
+ * opencv_ocl249.lib
+ * opencv_photo249.lib
+ * opencv_stitching249.lib
+ * opencv_superres249.lib
+ * opencv_ts249.lib
+ * opencv_video249.lib
+ * opencv_videostab249.lib
+
+##References
+
