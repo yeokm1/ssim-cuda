@@ -44,7 +44,7 @@ int main(int argc, char *argv[])
 		cout << "Not enough parameters" << endl;
 		cout << "Command: ssim reference_video.avi test_video.avi w x y [z]" << endl;
 		cout << "Where w is the start frame of reference video and x is the start frame of test video." << endl;
-		cout << "y is the ms delay between frames. If delay is 0, calculation will be faster but video will not be shown on screen. A value of 10 is recommended." << endl;
+		cout << "y is the ms delay between frames. If delay is 0, video will not be shown on screen but calculation will be a lot faster. A value of 10 is recommended." << endl;
 		cout << "[z] (optional) is the number of frames to process. If not specified, app will process to end of any video." << endl;
 
 		return -1;
