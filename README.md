@@ -11,10 +11,19 @@ ssim-cuda reference.avi test.avi 5 13 1000
 ```
 
 ##Dependencies I used
-1. OpenCV (2.4.9)
-2. Cmake (3.0.1)
-3. Visual Studio 2012 Update 4
-4. Nvidia Cuda
+1. OpenCV 2.4.9
+2. Cmake 3.0.1
+3. Visual Studio 2012 (VS2012 codenamed vc11) Update 4. Visual Studio Express should work too.
+4. Nvidia Cuda 6.5
 
+VS2013 has some problems compiling OpenCV 2.4.9 at this time but should have been fixed in the latest 3.0 alpha. Once the next stable version is released, you can use VS2013.
 
+###Installing Dependencies
+
+1. Install Visual Studio 2012 (VS2012 codenamed vc11). Install latest update which is "Update 4" at this time. Make sure to install VS2012 before CUDA drivers so the CUDA installer can install the VS Plugin properly.
+2. [Download CUDA 6.5](https://developer.nvidia.com/cuda-downloads). Select custom install. Check the everything except 3D vision as I don't use it.  Let the installer override your current graphics drivers if yours is the older version.
+3. [Download OpenCV 2.4.9](https://github.com/Itseez/opencv/releases) source zip. Do not use the installable exe as that does not come with CUDA support.
+4. [Download Cmake 3.0.1 Win32 installer](http://www.cmake.org/cmake/resources/software.html). During installation, add Cmake to system path of all users.
+
+###Compiling OpenCV
 
