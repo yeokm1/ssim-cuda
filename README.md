@@ -17,6 +17,7 @@ delayBetweenFrames is the ms delay between frames. If delay is 0, video will not
 2. Cmake 3.0.1
 3. Visual Studio 2012 (VS2012 codenamed vc11) Update 4. Visual Studio Express should work too.
 4. Nvidia Cuda 6.5
+5. Compiled on Windows 8.1 Pro
 
 VS2013 has some problems compiling OpenCV 2.4.9 at this time but should have been fixed in the latest 3.0 alpha. Once the next stable version is released, you can use VS2013.
 
