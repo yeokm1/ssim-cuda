@@ -29,7 +29,7 @@ VS2013 has some problems compiling OpenCV 2.4.9 at this time but should have bee
 4. [Download Cmake 3.0.1 Win32 installer](http://www.cmake.org/cmake/resources/software.html). During installation, add Cmake to system path of all users.
 
 ###Compiling OpenCV
-0. As a shortcut, if you intend to use the the exact same dependencies namely OpenCV 2.4.9, VS2012 and a Kepler GPU with CC3.0, you can just use my compilation. Unzip this [file](https://github.com/yeokm1/ssim-cuda/releases/download/v0.0/opencv249cuda.zip) to `C:\` and skip the rest of these steps.
+0. As a shortcut, if you intend to use the the exact same dependencies namely OpenCV 2.4.9, VS2012 and a Kepler GPU with CC3.0, you can just use my compilation. Unzip this [file](https://github.com/yeokm1/ssim-cuda/releases/download/v0.0/opencv249cuda.zip) to `C:\` and skip to step 11.
 1. Open CMake GUI as administrator so it access all directories.
 2. Set source to `C:\opencv` and where-to-build to `C:\opencv\build`
 3. Click "Configure", choose Visual Studio 11 2012, "Default native compilers". We are using the 32-bit compiler.
