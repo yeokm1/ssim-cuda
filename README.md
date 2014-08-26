@@ -5,10 +5,12 @@ CUDA Program to measure the similarity between two videos using the OpenCV libra
 
 ##Usage
 ```bash
-#ssim-cuda reference_video_file test_video_file reference_start_frame test_start_frame [numFramesToCompare]
-ssim-cuda reference.avi test.avi 0 1
-ssim-cuda reference.avi test.avi 5 13 1000
+#ssim-cuda reference_video_file test_video_file reference_start_frame test_start_frame delayBetweenFrames [numFramesToCompare]
+ssim-cuda reference.avi test.avi 0 1 d
+ssim-cuda reference.avi test.avi 5 13 n 1000
 ```
+
+For delayBetweenFrames, it is whether to delay 10ms between frames. If no delay, calculation will be faster but video will not be shown on screen. Put 'd' to delay or anything else to not delay.
 
 ##Dependencies I used
 1. OpenCV 2.4.9
