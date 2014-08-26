@@ -119,6 +119,10 @@ int main(int argc, char *argv[])
 	Scalar mssimV;
 
 	BufferMSSIM bufferMSSIM;
+
+	double time = (double)getTickCount();
+
+
 	for (;;) //Show the image captured in the window and repeat
 	{
 		//Skip frames until both streams have synchronised on their starting frames
@@ -186,11 +190,13 @@ int main(int argc, char *argv[])
 		}
 	}
 
+	time = ((double)getTickCount() - time)/ getTickFrequency();
 
 	double redSimilarity = (redChannelTotal / comparisonFrameNum) / 100.0;
 	double greenSimilarity = (greenChannelTotal / comparisonFrameNum) / 100.0;
 	double blueSimilarity = (blueChannelTotal / comparisonFrameNum) / 100.0;
 
+	cout << "Processing time: " << time << " seconds." << endl;
 	cout << "Ref start frame: " << refFramesToWait << ", Test start frame: " << testFramesToWait << endl;
 	cout << "Final Results" << endl;
 
@@ -203,6 +209,8 @@ int main(int argc, char *argv[])
 	double average = (redSimilarity + greenSimilarity + blueSimilarity) / 3;
 
 	cout << "Similarity = " << average << "%" << endl;
+
+
 
 	return 0;
 }
