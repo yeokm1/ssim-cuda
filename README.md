@@ -20,10 +20,15 @@ VS2013 has some problems compiling OpenCV 2.4.9 at this time but should have bee
 
 ###Installing Dependencies
 
-1. Install Visual Studio 2012 (VS2012 codenamed vc11). Install latest update which is "Update 4" at this time. Make sure to install VS2012 before CUDA drivers so the CUDA installer can install the VS Plugin properly.
+1. Install Visual Studio 2012 (VS2012 codenamed vc11). Install latest update which is "Update 4" at this time. Make sure to install VS2012 <b>before</b> CUDA drivers so the CUDA installer can install the VS Plugin properly.
 2. [Download CUDA 6.5](https://developer.nvidia.com/cuda-downloads). Select custom install. Check the everything except 3D vision as I don't use it.  Let the installer override your current graphics drivers if yours is the older version.
-3. [Download OpenCV 2.4.9](https://github.com/Itseez/opencv/releases) source zip. Do not use the installable exe as that does not come with CUDA support.
+3. [Download OpenCV 2.4.9](https://github.com/Itseez/opencv/releases) source zip. Do not use the installable exe as that does not come with CUDA support. Unzip to `C:\opencv`
 4. [Download Cmake 3.0.1 Win32 installer](http://www.cmake.org/cmake/resources/software.html). During installation, add Cmake to system path of all users.
 
 ###Compiling OpenCV
-
+1. Open CMake GUI as administrator so it access all directories.
+2. Click "Configure", choose Visual Studio 11 2012, "Default native compilers".
+3. Search for CUDA. For CUDA_ARCH_BIN, remove all the numbers except the number of your current GPU architecture. For example, I use a GeForce 650 which has a compute capability (CC) of 3.0. Use this [list](https://developer.nvidia.com/cuda-gpus) to look up the CC of your GPU. We remove other numbers to shorten compilation time by only compiling for the CC we want.
+4. Clear the CUDA_ARCH_PTX field. Tick CUDA_FAST_MATH, WITH_CUDA and BUILD_opencv_gpu. Check that CUDA_TOOLKIT_ROOT_DIR is correctly populated.
+5. To speed up compilation even more, I untick BUILD_TESTS and BUILD_PERF_TESTS.
+6. Click Generate.
