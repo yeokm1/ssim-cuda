@@ -21,7 +21,7 @@ VS2013 has some problems compiling OpenCV 2.4.9 at this time but should have bee
 ###Installing Dependencies
 
 1. Install Visual Studio 2012 (VS2012 codenamed vc11). Install latest update which is "Update 4" at this time. Make sure to install VS2012 <b>before</b> CUDA drivers so the CUDA installer can install the VS Plugin properly.
-2. [Download CUDA 6.5](https://developer.nvidia.com/cuda-downloads). Select custom install. Check the everything except 3D vision as I don't use it.  Let the installer override your current graphics drivers if yours is the older version.
+2. [Download CUDA 6.5](https://developer.nvidia.com/cuda-downloads). Select custom install. Check everything except 3D Vision as I don't use it.  Let the installer override your current graphics drivers if yours is the older version.
 3. [Download OpenCV 2.4.9](https://github.com/Itseez/opencv/releases) source zip. Do not use the installable exe as that does not come with CUDA support. Unzip to `C:\opencv`
 4. [Download Cmake 3.0.1 Win32 installer](http://www.cmake.org/cmake/resources/software.html). During installation, add Cmake to system path of all users.
 
