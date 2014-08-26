@@ -28,7 +28,11 @@ VS2013 has some problems compiling OpenCV 2.4.9 at this time but should have bee
 ###Compiling OpenCV
 1. Open CMake GUI as administrator so it access all directories.
 2. Click "Configure", choose Visual Studio 11 2012, "Default native compilers".
-3. Search for CUDA. For CUDA_ARCH_BIN, remove all the numbers except the number of your current GPU architecture. For example, I use a GeForce 650 which has a compute capability (CC) of 3.0. Use this [list](https://developer.nvidia.com/cuda-gpus) to look up the CC of your GPU. We remove other numbers to shorten compilation time by only compiling for the CC we want.
-4. Empty out the CUDA_ARCH_PTX field as I don't use a virtual platform. Tick CUDA_FAST_MATH. Verify that WITH_CUDA and BUILD_opencv_gpu are also ticked. Check that CUDA_TOOLKIT_ROOT_DIR is correctly populated.
-5. To speed up compilation even more, I untick BUILD_TESTS and BUILD_PERF_TESTS.
+3. Search for CUDA. For `CUDA_ARCH_BIN`, remove all the numbers except the number of your current GPU architecture. For example, I use a GeForce 650 which has a compute capability (CC) of 3.0. Use this [list](https://developer.nvidia.com/cuda-gpus) to look up the CC of your GPU. We remove other numbers to shorten compilation time by only compiling for the CC we want.
+4. Empty out the `CUDA_ARCH_PTX` field as I don't use a virtual platform. Tick `CUDA_FAST_MATH`. Verify that `WITH_CUDA` and `BUILD_opencv_gpu` are also ticked. Check that `CUDA_TOOLKIT_ROOT_DIR` is correctly populated.
+5. To speed up compilation even more, I untick `BUILD_TESTS` and `BUILD_PERF_TESTS`.
 6. Click Generate.
+7. Go to `C:\opencv\build` and open OPENCV.sln. Select Debug Build.
+8. Click BUILD in the toolbar and BUILD ALL_BUILD. If VS asks to reload modules because they have been modified externally, just reload.
+9. Select Release Build and repeat step 8.
+10. Go to System Properties to set your path. Modify path by adding, `c:\opencv\build\bin\DEBUG;c:\opencv\build\bin\RELEASE`
