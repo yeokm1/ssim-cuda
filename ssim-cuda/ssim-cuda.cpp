@@ -8,7 +8,7 @@
 #include <opencv2/highgui/highgui.hpp>  // OpenCV window I/O
 #include <opencv2/gpu/gpu.hpp>
 
-#define STATUS_PER_NUM_FRAMES 50
+#define STATUS_PER_NUM_FRAMES 200
 
 using namespace std;
 using namespace cv;
